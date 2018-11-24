@@ -1,0 +1,61 @@
+version: '1.0'
+steps:
+  DeployInParallel:
+    type: parallel
+    steps:
+      Deploy01:
+        title: Deploy01
+        type: deploy
+        kind: kubernetes
+        cluster: 'codefresh-test-01@My Test Project'
+        namespace: testcase
+        service: dep01
+        candidate:
+          image: '${{Image}}'
+          registry: dockerhub
+      Deploy02:
+        title: Deploy02
+        type: deploy
+        kind: kubernetes
+        cluster: 'codefresh-test-01@My Test Project'
+        namespace: testcase
+        service: dep02
+        candidate:
+          image: '${{Image}}'
+          registry: dockerhub
+      Deploy03:
+        title: Deploy03
+        type: deploy
+        kind: kubernetes
+        cluster: 'codefresh-test-01@My Test Project'
+        namespace: testcase
+        service: dep03
+        candidate:
+          image: '${{Image}}'
+          registry: dockerhub
+      Deploy04:
+        title: Deploy04
+        type: deploy
+        kind: kubernetes
+        cluster: 'codefresh-test-01@My Test Project'
+        namespace: testcase
+        service: dep04
+        candidate:
+          image: '${{Image}}'
+          registry: dockerhub
+      Deploy05:
+        title: Deploy05
+        type: deploy
+        kind: kubernetes
+        cluster: 'codefresh-test-01@My Test Project'
+        namespace: testcase
+        service: dep05
+        candidate:
+          image: '${{Image}}'
+          registry: dockerhub
+  test:
+    title: Test Sleep
+    description: Test Sleep
+    image: ubuntu:latest
+    commands: 
+     - sleep 6000
